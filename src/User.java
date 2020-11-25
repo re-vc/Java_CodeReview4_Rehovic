@@ -2,31 +2,46 @@ import java.util.ArrayList;
 
 public class User {
 
+    private static int counter = 1;
+
     private int userID;
     private String userName;
     private String userSurname;
     private String userEmail;
     private String userAddress;
-    private int userZip;
+    private String userZip;
     private String userPhone;
 
-    private ArrayList<Product> userInventory = new ArrayList<>();
+    private ArrayList<Purchase> purchaseHistory;
 
-    public User(int userID, String userName, String userSurname, String userEmail, String userAddress, int userZip, String userPhone) {
-        this.userID = userID;
+    public User(String userName, String userSurname, String userEmail, String userAddress, String userZip, String userPhone) {
+        this.userID = counter++;
         this.userName = userName;
         this.userSurname = userSurname;
         this.userEmail = userEmail;
         this.userAddress = userAddress;
         this.userZip = userZip;
         this.userPhone = userPhone;
+        this.purchaseHistory = new ArrayList<>();
+    }
+
+    // methods
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userID=" + userID +
+                ", userName='" + userName + '\'' +
+                ", userSurname='" + userSurname + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userAddress='" + userAddress + '\'' +
+                ", userZip='" + userZip + '\'' +
+                ", userPhone='" + userPhone + '\'' +
+                ", purchaseHistory=" + purchaseHistory +
+                '}';
     }
 
     // getter | setter
-    public void setUserInventory(ArrayList<Product> userInventory) {
-        this.userInventory = userInventory;
-    }
-
     public void setUserID(int userID) {
         this.userID = userID;
     }
@@ -47,7 +62,7 @@ public class User {
         this.userAddress = userAddress;
     }
 
-    public void setUserZip(int userZip) {
+    public void setUserZip(String userZip) {
         this.userZip = userZip;
     }
 
@@ -55,8 +70,8 @@ public class User {
         this.userPhone = userPhone;
     }
 
-    public ArrayList<Product> getUserInventory() {
-        return userInventory;
+    public void setPurchaseHistory(ArrayList<Purchase> purchaseHistory) {
+        this.purchaseHistory = purchaseHistory;
     }
 
     public int getUserID() {
@@ -79,7 +94,7 @@ public class User {
         return userAddress;
     }
 
-    public int getUserZip() {
+    public String getUserZip() {
         return userZip;
     }
 
@@ -87,30 +102,7 @@ public class User {
         return userPhone;
     }
 
-    // method
-    public void userPurchase(Shop shop, Product product){
-        if (product.getProductStock() == 0){
-            shop.removeProduct(product);
-        } else {
-            product.setProductStock(product.getProductStock() - 1);
-        }
-        userInventory.add(product);
-        System.out.println("User purchased: " + product.getProductName());
-
-        //userInventory.get(userInventory.indexOf(product)).setProductStock(0);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userID=" + userID +
-                ", userName='" + userName + '\'' +
-                ", userSurname='" + userSurname + '\'' +
-                ", userEmail='" + userEmail + '\'' +
-                ", userAddress='" + userAddress + '\'' +
-                ", userZip=" + userZip +
-                ", userPhone='" + userPhone + '\'' +
-                ", userInventory=" + userInventory +
-                '}';
+    public ArrayList<Purchase> getPurchaseHistory() {
+        return purchaseHistory;
     }
 }

@@ -1,25 +1,38 @@
 public class Product {
 
+    private static int counter = 1;
+
     private int productID;
+    private int productStock;
+    private double productPrice;
     private String productName;
     private String productDescription;
-    private double productPrice;
-    private int productStock;
-
-    enum Category{
-        TROUSERS, SHIRTS, JACKETS, SOCKS, GLOVES
-    }
-
     private Category productCategory;
 
-    public Product(int productID, String productName, String productDescription, double productPrice, int productStock, Category productCategory) {
-        this.productID = productID;
+    // constructor
+
+    public Product(double productPrice, String productName, String productDescription, Category productCategory) {
+        this.productID = counter++;
+        this.productPrice = productPrice;
         this.productName = productName;
         this.productDescription = productDescription;
-        this.productPrice = productPrice;
-        this.productStock = productStock;
         this.productCategory = productCategory;
     }
+
+    // method
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "productID=" + productID +
+                ", productStock=" + productStock +
+                ", productPrice=" + productPrice +
+                ", productName='" + productName + '\'' +
+                ", productDescription='" + productDescription + '\'' +
+                ", productCategory=" + productCategory +
+                '}';
+    }
+
 
     // getter | setter
 
@@ -27,12 +40,12 @@ public class Product {
         return productStock;
     }
 
-    public Category getProductCategory() {
-        return productCategory;
-    }
-
     public int getProductID() {
         return productID;
+    }
+
+    public double getProductPrice() {
+        return productPrice;
     }
 
     public String getProductName() {
@@ -43,16 +56,20 @@ public class Product {
         return productDescription;
     }
 
-    public double getProductPrice() {
-        return productPrice;
+    public Category getProductCategory() {
+        return productCategory;
     }
 
-    public void setProductCategory(Category productCategory) {
-        this.productCategory = productCategory;
+    public void setProductStock(int productStock) {
+        this.productStock = productStock;
     }
 
     public void setProductID(int productID) {
         this.productID = productID;
+    }
+
+    public void setProductPrice(double productPrice) {
+        this.productPrice = productPrice;
     }
 
     public void setProductName(String productName) {
@@ -63,25 +80,7 @@ public class Product {
         this.productDescription = productDescription;
     }
 
-    public void setProductPrice(double productPrice) {
-        this.productPrice = productPrice;
-    }
-
-    public void setProductStock(int productStock) {
-        this.productStock = productStock;
-    }
-
-    // method
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "productID=" + productID +
-                ", productName='" + productName + '\'' +
-                ", productDescription='" + productDescription + '\'' +
-                ", productPrice=" + productPrice +
-                ", productStock=" + productStock +
-                ", productCategory=" + productCategory +
-                '}';
+    public void setProductCategory(Category productCategory) {
+        this.productCategory = productCategory;
     }
 }
