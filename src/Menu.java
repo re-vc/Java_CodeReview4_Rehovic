@@ -45,13 +45,13 @@ public class Menu {
         printSubMenu();
     }
 
-    public void displayCategorySubMenu(){
+    public void displayCategorySubMenu() {
         printCategorySubMenu();
     }
 
     // user input
 
-    public int getInput(){
+    public int getInput() {
         int choice = -1;
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter choice: ");
@@ -62,7 +62,7 @@ public class Menu {
                 System.out.println("Wrong input, can only be numeric.");
             }
 
-            if (choice < 0 || choice > 5){
+            if (choice < 0 || choice > 5) {
                 System.out.println("Wrong input, try it again!");
                 choice = -1;
             }
@@ -70,10 +70,10 @@ public class Menu {
         return choice;
     }
 
-    public void executeAction(int choice){
+    public void executeAction(int choice) {
         boolean exit = false;
-        while (!exit){
-            switch (choice){
+        while (!exit) {
+            switch (choice) {
                 case 1: {
                     // display all products.
                     System.out.println("case 1");
@@ -108,10 +108,10 @@ public class Menu {
         }
     }
 
-    public void executeCategorySubAction(int choice){
+    public void executeCategorySubAction(int choice) {
         boolean exit = false;
-        while (!exit){
-            switch (choice){
+        while (!exit) {
+            switch (choice) {
                 case 1: {
                     // display all products.
                     System.out.println("case 1");
@@ -152,10 +152,10 @@ public class Menu {
         }
     }
 
-    public void executeSubAction(int choice){
+    public void executeSubAction(int choice) {
         boolean exit = false;
-        while (!exit){
-            switch (choice){
+        while (!exit) {
+            switch (choice) {
                 case 1: {
                     // go back to main menu
                     System.out.println("case 1");

@@ -21,14 +21,14 @@ public class Shop {
     }
 
     // method
-    public void addUser(User user){
+    public void addUser(User user) {
         users.add(user);
     }
 
-    public void addProduct(Product product, int amount) throws StockLimitReachedException{
+    public void addProduct(Product product, int amount) throws StockLimitReachedException {
         int stock;
         stock = product.getProductStock() + amount;
-        if (stock >= maxProduct){
+        if (stock >= maxProduct) {
             System.out.println(product.getProductName() + " stock limit reached. ");
             products.add(product);
             product.setProductStock(maxProduct);
@@ -39,36 +39,36 @@ public class Shop {
         }
     }
 
-    public void purchaseProduct(User user, Product product, int amount) throws OutOfStockException{
+    public void purchaseProduct(User user, Product product, int amount) throws OutOfStockException {
         int stock;
         stock = product.getProductStock() - amount;
-        if (stock >= 0){
+        if (stock >= 0) {
             System.out.println(user.getUserName() + " purchased " + product.getProductName());
             product.setProductStock(stock);
-            user.getPurchaseHistory().add(new Purchase(amount,product.getProductPrice(),product.getProductName()));
-            if (stock <= minProduct){
+            user.getPurchaseHistory().add(new Purchase(amount, product.getProductPrice(), product.getProductName()));
+            if (stock <= minProduct) {
                 displayLowStock(product);
             }
-        } else if (stock < 0){
+        } else if (stock < 0) {
             throw new OutOfStockException();
         }
 
     }
 
-    public void displayAllProducts(){
+    public void displayAllProducts() {
         System.out.println("---------------------------------------");
         System.out.println("These are ALL Products.");
-        for (int i = 0; i < products.size(); i++){
+        for (int i = 0; i < products.size(); i++) {
             System.out.println(products.get(i));
         }
         System.out.println("---------------------------------------");
     }
 
-    public void displayCategoryProducts(Category category){
+    public void displayCategoryProducts(Category category) {
         System.out.println("---------------------------------------");
         System.out.println("These are the Products of Category: " + category.name());
-        for (Product product : this.products){
-            if (category == product.getProductCategory()){
+        for (Product product : this.products) {
+            if (category == product.getProductCategory()) {
                 System.out.println(product);
 
             }
@@ -76,29 +76,29 @@ public class Shop {
         System.out.println("---------------------------------------");
     }
 
-    public void displayLesserProducts(){
+    public void displayLesserProducts() {
         System.out.println("---------------------------------------");
         System.out.println("These Products are almost out of Stock!");
-        for (Product product : this.products){
-            if (product.getProductStock() < minProduct){
+        for (Product product : this.products) {
+            if (product.getProductStock() < minProduct) {
                 System.out.println(product);
             }
         }
         System.out.println("---------------------------------------");
     }
 
-    public void displayOutOfProducts(){
+    public void displayOutOfProducts() {
         System.out.println("---------------------------------------");
         System.out.println("These Products ARE out of Stock!");
-        for (Product product : this.products){
-            if (product.getProductStock() == 0){
+        for (Product product : this.products) {
+            if (product.getProductStock() == 0) {
                 System.out.println(product);
             }
         }
         System.out.println("---------------------------------------");
     }
 
-    public void displayLowStock(Product product){
+    public void displayLowStock(Product product) {
         System.out.println();
         System.out.println("!!!");
         System.out.println("Information for Staff");

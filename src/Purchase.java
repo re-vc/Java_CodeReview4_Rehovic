@@ -17,7 +17,8 @@ public class Purchase {
         this.purchaseName = purchaseName;
     }
 
-    public Purchase() {}
+    public Purchase() {
+    }
 
     // method
 
